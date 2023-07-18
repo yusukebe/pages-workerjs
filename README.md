@@ -18,7 +18,7 @@ Dev:
 npm run dev
 ```
 
-Devploy:
+Deploy:
 
 ```
 npm run deploy
