@@ -1,11 +1,11 @@
 // Don't edit this file.
 
-import type { Handler } from 'hono'
+import type { MiddlewareHandler } from 'hono'
 
 import app from './src/index'
 
-const serveStatic = (): Handler => {
-  return async (c) => {
+const serveStatic = (): MiddlewareHandler => {
+  return async (c, _next) => {
     const env = c.env as { ASSETS: Fetcher }
     const res = await env.ASSETS.fetch(c.req.raw)
     if (res.status === 404) {
