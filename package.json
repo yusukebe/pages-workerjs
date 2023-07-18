@@ -1,0 +1,19 @@
+{
+  "private": true,
+  "scripts": {
+    "dev:pages": "wrangler pages dev --compatibility-date=2023-07-10 --live-reload ./pages",
+    "dev": "concurrently \"yarn dev:pages\" \"yarn build:watch\"",
+    "deploy": "yarn build && wrangler pages deploy ./pages",
+    "build": "esbuild --bundle _worker.ts --format=esm --outfile=pages/_worker.js",
+    "build:watch": "esbuild --bundle _worker.ts --format=esm --outfile=pages/_worker.js --watch"
+  },
+  "dependencies": {
+    "hono": "^3.3.1"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20230628.0",
+    "concurrently": "^8.2.0",
+    "esbuild": "^0.18.13",
+    "wrangler": "^3.1.2"
+  }
+}
